@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="static\styles.css">
+
+    <title>Email Sending Automation</title>
+</head>
+<body>
+
+  <!-- NAV BAR -->
+  <header>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html" class="active"><img src="static\logo.png" height="55px"></a>
+
+          <!-- MENU BUTTONS (VERY OPTIONAL) -->
+
+          <!-- <div class="topnav-right">
+              <a href="">Menu 1</a>
+              <a href="">Menu 2</a>
+            </div>-->
+          </div>
+
+          <hr>
+
+</header>
+
+<!-- MAIN CONTENT -->
+
+<main class="main">
+
+
+    <div style="width: 100%;">
+      <div class="div-left">
+
+        <p style="color:green;">HTML file: {{ filename1 }} was successfully uploaded.</p>
+          <form action="#" method='POST' enctype="multipart/form-data">
+            <label>Select File</label>
+              <input type="file" name="file1"/>
+              <input type="submit" name="upload1" value="Upload" disabled="true">
+          </form>
+
+          <br><br><p style="color:green;">CSV file: {{ filename2 }} was successfully uploaded.</p>
+          <form action="#" method='POST' enctype="multipart/form-data">
+            <label>Select File</label>
+              <input type="file" name="file2"/>
+              <input type="submit" name="upload2" value="Upload" disabled="true">
+          </form>
+
+            <br><br><form action="{{ url_for('automation_page') }}" method="GET">
+              <button type="submit">Send Email Now</button>
+            </form>
+          </div>
+
+
+
+</main>
+
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<!-- FOOTER -->
+
+<footer class="footer">
+  <div class="footer__addr">
+  <img src="static\logo.png" height="100px">
+
+  </div>
+
+  <ul class="footer__nav">
+    <li class="nav__item nav__item--extra">
+      <h2 class="nav__title">iMadz Solutions and Technologies Inc</h2>
+
+      <!-- <ul class="nav__ul">
+        <li>
+          <a href="#">About Us</a>
+        </li>
+
+        <li>
+          <a href="#">Services</a>
+        </li>
+
+        <li>
+          <a href="#">Solutions</a>
+        </li>
+
+        <li>
+          <a href="#">Careers</a>
+        </li>
+      </ul>
+    </li> -->
+
+
+    <li class="nav__item">
+      <h2 class="nav__title">Email Automation</h2>
+
+      <ul class="nav__ul">
+        <li>
+          <a href="FAQ.html">FAQ</a>
+        </li>
+
+        <li>
+          <a href="PrivacyPolicy.html">Privacy Policy</a>
+        </li>
+
+        <li>
+          <a href="TermsOfUse.html">Terms of Use</a>
+        </li>
+
+      </ul>
+    </li>
+
+    <li class="nav__item">
+      <h2 class="nav__title">Contact Us</h2>
+
+      <ul class="nav__ul">
+        <li>
+          1639 ADB Avenue, Ortigas, Pasig City
+        </li>
+
+        <li>
+          (+63) 9171474783
+        </li>
+
+        <li>
+          (+63) 9363392851
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="legal">
+      &copy; 2022 All rights reserved.
+
+  </div>
+</footer>
+
+</body>
+</html>
