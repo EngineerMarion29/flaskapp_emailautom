@@ -18,7 +18,7 @@ RUN yum -y update \
     && make altinstall
 
 # Set the working directory inside the container
-WORKDIR .
+WORKDIR /flaskapp_autom_email
 
 # Copy the Django app files into the container
 COPY . .
