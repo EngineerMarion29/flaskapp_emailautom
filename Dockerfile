@@ -31,4 +31,4 @@ RUN python3.11 -m ensurepip \
 EXPOSE 5000
 
 # Run the Django development server
-CMD ["/usr/local/bin/python3.11", "manage.py", "runserver", "0.0.0.0:5000"]
+CMD ["/usr/local/bin/python3.11", "main.py"]
