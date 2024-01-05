@@ -34,8 +34,8 @@ pipeline {
         stage('Install Dependencies 2') {
             steps {
                 script {
-                    sh 'sudo yum install openssl-devel'
-                    sh 'python3.11 -m pip install --upgrade pip && python3.11 -m ensurepip && pip3.11 install -r requirements.txt'
+                    sh 'sudo yum install python3.11-devel && sudo yum install openssl-devel'
+                    sh 'python3.11 -m pip install --upgrade pip && python3.11 -m ensurepip && pip3.11 install --index-url=http://pypi.python.org/simple/ --trusted-host=pypi.python.org -r requirements.txt'
                 }
             }
         }
