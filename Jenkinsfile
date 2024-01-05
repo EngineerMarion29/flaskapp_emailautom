@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PYTHON_VERSION = '3.11'
-        VENV_NAME = 'venv_flaskapp'
+        VENV_NAME = 'venv_flaskapp29'
     }
 
     stages {
