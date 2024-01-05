@@ -34,8 +34,20 @@ pipeline {
         stage('Install Dependencies 2') {
             steps {
                 script {
-                    sh 'sudo yum install -y python3.11-devel openssl-devel bzip2-devel readline-devel sqlite-devel ncurses-devel'
-                    sh 'python3.11 -m pip install --upgrade pip && python3.11 -m ensurepip && pip3.11 install --index-url=http://pypi.python.org/simple/ --trusted-host=pypi.python.org -r requirements.txt'
+                    // Reinstall Python 3.11 to address the missing `ssl` module
+                    sh 'sudo yum reinstall python3.11'
+
+                    // Ensure necessary environment variables are available
+                    sh 'source ~/.bashrc'
+
+                    // Upgrade pip using pip itself within Python 3.11
+                    sh 'python3.11 -m pip install --upgrade pip'
+
+                    // Verify and ensure pip is properly installed
+                    sh 'python3.11 -m ensurepip'
+
+                    // Install dependencies using secure HTTPS repository (without SSL verification bypass)
+                    sh 'pip3.11 install --index-url=https://pypi.org/simple -r requirements.txt'
                 }
             }
         }
