@@ -11,7 +11,7 @@ pipeline {
         stage('Install Dependencies 2') {
             steps {
                 script {
-                    // Reinstall Python 3.11 to address the missing `ssl` module
+                    // Installing dependencies
                     sh 'pip3.11 install -r requirements.txt'
                 }
             }
