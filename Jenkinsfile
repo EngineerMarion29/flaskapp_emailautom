@@ -23,6 +23,9 @@ pipeline {
 
                     // Verify Python installation
                     sh 'sudo python3.11 --version'
+
+            	    // Create a symbolic link to the Python executable in /usr/local/bin/
+                    sh 'sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python'
                 }
             }
         }
