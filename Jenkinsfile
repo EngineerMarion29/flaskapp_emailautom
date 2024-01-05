@@ -34,7 +34,7 @@ pipeline {
         stage('Install Dependencies 2') {
             steps {
                 script {
-                    sh 'pip3 install -r requirements.txt'
+                    sh 'python3.11 -m ensurepip && pip3 install -r requirements.txt'
                 }
             }
         }
