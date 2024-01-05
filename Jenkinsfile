@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script {
                     // Install build dependencies
+                    sh 'sudo make clean'
                     sh 'sudo yum -y install gcc openssl-devel bzip2-devel sqlite-devel make wget'
 
                     // Download and install Python 3.11.3
