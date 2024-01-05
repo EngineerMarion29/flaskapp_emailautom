@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Installing dependencies
                     sh 'python3.11 -m venv venv'
-                    sh 'source venv/bin/activate && pip3.11 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org -r requirements.txt'
+                    sh 'source venv/bin/activate && /usr/local/lib/python3.11/site-packages/pip install -r requirements.txt'
                 }
             }
         }
