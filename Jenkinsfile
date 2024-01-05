@@ -34,6 +34,7 @@ pipeline {
         stage('Install Dependencies 2') {
             steps {
                 script {
+                    sh 'yum install openssl-devel'
                     sh 'python3.11 -m pip install --upgrade pip && python3.11 -m ensurepip && pip3.11 install -r requirements.txt'
                 }
             }
