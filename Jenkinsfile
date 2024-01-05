@@ -22,7 +22,7 @@ pipeline {
                     sh 'cd Python-3.11.3 && make altinstall'
 
                     // Verify Python installation
-                    sh 'python3.11 --version'
+                    sh 'sudo python3.11 --version'
                 }
             }
         }
