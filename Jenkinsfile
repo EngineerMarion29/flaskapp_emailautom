@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Installing dependencies
                     sh 'python3.11 -m venv venv'
-                    sh 'source venv/bin/activate && sudo yum install openssl-devel -y && pip3.11 install urllib3[secure] && pip3.11 install -r requirements.txt'
+                    sh 'source venv/bin/activate && pip3.11 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org -r requirements.txt'
                 }
             }
         }
