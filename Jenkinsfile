@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Installing dependencies
-                    sh "python --version"
+                    sh "python3.11 --version"
                     sh "python3.11 -m venv ${VENV_NAME}"
                     sh "source ${VENV_NAME}/bin/activate"
                     sh '/usr/local/bin/pip3.11 install -r requirements.txt'
