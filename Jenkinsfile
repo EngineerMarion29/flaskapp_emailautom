@@ -19,7 +19,7 @@ pipeline {
                     sh 'wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz'
                     sh 'tar xzf Python-3.11.3.tgz'
                     sh 'cd Python-3.11.3 && ./configure --enable-optimizations'
-                    sh 'sudo make altinstall'
+                    sh 'make altinstall'
 
                     // Verify Python installation
                     sh 'sudo python3.11 --version'
