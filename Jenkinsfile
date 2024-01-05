@@ -17,12 +17,6 @@ pipeline {
             steps {
                 script {
                     // Installing dependencies
-                    sh 'git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-                    sh 'echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
-                    sh 'echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-                    sh 'echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-                    sh 'source ~/.bashrc
-                    sh "pyenv global ${PYTHON_VERSION}"
                     sh "python --version"
                     sh "python -m venv ${VENV_NAME}"
                     sh "source ${VENV_NAME}/bin/activate"
