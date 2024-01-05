@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Installing dependencies
                     sh 'sudo yum install openssl-devel -y && sudo yum install virtualenv -y'
-                    sh 'source bin/activate && 'pip3.11 install -r requirements.txt'
+                    sh 'source bin/activate && pip3.11 install -r requirements.txt'
                 }
             }
         }
