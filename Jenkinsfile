@@ -12,8 +12,8 @@ pipeline {
             steps {
                 script {
                     // Installing dependencies
-                    sh 'sudo yum install openssl-devel -y && python3.11 -m venv venv'
-                    sh 'source venv/bin/activate && pip3.11 install -r requirements.txt'
+                    sh 'python3.11 -m venv venv'
+                    sh 'source venv/bin/activate && sudo yum install openssl-devel -y && pip3.11 install -r requirements.txt'
                 }
             }
         }
