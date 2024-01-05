@@ -13,7 +13,6 @@ pipeline {
             steps {
                 script {
                     // Install build dependencies
-                    sh 'sudo su -'
                     sh 'sudo yum -y install gcc openssl-devel bzip2-devel sqlite-devel make wget'
 
                     // Download and install Python 3.11.3
@@ -23,10 +22,10 @@ pipeline {
                     sh 'cd Python-3.11.3 && make altinstall'
 
                     // Verify Python installation
-                    sh 'python3.11 --version'
+                    // sh 'python3.11 --version'
 
             	    // Create a symbolic link to the Python executable in /usr/local/bin/
-                    sh 'sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python'
+                    // sh 'sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python'
                 }
             }
         }
