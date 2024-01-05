@@ -8,7 +8,27 @@ pipeline {
             }
         }
 
+
         stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install build dependencies
+                    sh 'yum -y install gcc openssl-devel bzip2-devel sqlite-devel make wget'
+
+                    // Download and install Python 3.11.3
+                    sh 'wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz'
+                    sh 'tar xzf Python-3.11.3.tgz'
+                    sh 'cd Python-3.11.3 && ./configure --enable-optimizations'
+                    sh 'cd Python-3.11.3 && make altinstall'
+
+                    // Verify Python installation
+                    sh 'python3.11 --version'
+                }
+            }
+        }
+
+
+        stage('Install Dependencies 2') {
             steps {
                 script {
                     sh 'pip install -r requirements.txt'
