@@ -22,7 +22,7 @@ pipeline {
                     sh 'cd Python-3.11.3 && sudo make altinstall'
 
                     // Verify Python installation
-                    // sh 'python3.11 --version'
+                    sh 'python3.11 --version'
 
             	    // Create a symbolic link to the Python executable in /usr/local/bin/
                     // sh 'sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python'
@@ -34,7 +34,7 @@ pipeline {
         stage('Install Dependencies 2') {
             steps {
                 script {
-                    sh 'pip install -r requirements.txt'
+                    sh 'pip3 install -r requirements.txt'
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'python test.py'
+                    sh 'python3.11 test.py'
                 }
             }
         }
@@ -50,7 +50,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                    sh 'pip install pylint'
+                    sh 'pip3 install pylint'
                     sh 'pylint main.py'
                 }
             }
