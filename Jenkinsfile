@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON_VERSION = '3.11'
+        VENV_NAME = 'venv'
+    }
+
     stages {
         stage('Checkout SCM') {
             steps {
@@ -12,8 +17,11 @@ pipeline {
             steps {
                 script {
                     // Installing dependencies
-                    sh 'python3.11 -m venv venv'
-                    sh 'source venv/bin/activate && /usr/local/bin/pip3.11 install -r requirements.txt'
+                    sh "pyenv global ${PYTHON_VERSION}"
+                    sh "python --version"
+                    sh "python -m venv ${VENV_NAME}"
+                    sh "source ${VENV_NAME}/bin/activate"
+                    sh '/usr/local/bin/pip3.11 install -r requirements.txt'
                 }
             }
         }
