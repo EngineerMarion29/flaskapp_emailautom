@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        PYTHON_VERSION = '3.11'
-        VENV_NAME = 'venv_flaskapp29'
-    }
-
     stages {
         stage('Checkout SCM') {
             steps {
@@ -18,9 +13,9 @@ pipeline {
                 script {
                     // Installing dependencies
                     sh "python3.11 --version"
-                    sh "python3.11 -m venv ${VENV_NAME}"
-                    sh "source ${VENV_NAME}/bin/activate"
-                    sh '/usr/local/bin/pip3.11 install -r requirements.txt'
+                    sh "virtualenv ."
+                    sh "source bin/activate"
+                    sh 'pip3.11 install -r requirements.txt'
                 }
             }
         }
@@ -46,10 +41,10 @@ pipeline {
             steps {
                 script {
                     // Replace the placeholders with your actual values
-                    def dockerhostIp = '172.31.32.140'
+                    def dockerhostIp = '172.31.42.85'
                     def dockerhostUser = 'dockeradmin'
                     def dockerhostKey = '/root/.ssh/id_rsa.pub'
-                    def projectDir = '/home/dockeradmin'
+                    def projectDir = ''
 
                     sh """
                         scp -i ${dockerhostKey} -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
