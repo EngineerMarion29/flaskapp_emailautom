@@ -13,14 +13,13 @@ pipeline {
             steps {
                 script {
                     // Install build dependencies
-                    sh 'sudo make clean'
                     sh 'sudo yum -y install gcc openssl-devel bzip2-devel sqlite-devel make wget'
 
                     // Download and install Python 3.11.3
                     sh 'wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz'
                     sh 'tar xzf Python-3.11.3.tgz'
                     sh 'cd Python-3.11.3 && ./configure --enable-optimizations'
-                    sh 'cd Python-3.11.3 && make altinstall'
+                    sh 'cd Python-3.11.3 && sudo make altinstall'
 
                     // Verify Python installation
                     // sh 'python3.11 --version'
