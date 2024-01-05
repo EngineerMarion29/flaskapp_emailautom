@@ -8,7 +8,7 @@ pipeline {
             }
         }
         
-        stage('Install Dependencies 2') {
+        stage('Install Dependencies') {
             steps {
                 script {
                     // Installing dependencies
@@ -44,7 +44,7 @@ pipeline {
                     def dockerhostIp = '172.31.42.85'
                     def dockerhostUser = 'dockeradmin'
                     def dockerhostKey = '/root/.ssh/id_rsa.pub'
-                    def projectDir = ''
+                    def projectDir = '/var/lib/jenkins/workspace/PullCodeFromGH_BuildPipeline'
 
                     sh """
                         scp -i ${dockerhostKey} -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
