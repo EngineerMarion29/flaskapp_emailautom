@@ -2,9 +2,22 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    sh 'pip install -r requirements.txt'
+                }
+            }
+        }
+
         stage('Test') {
             steps {
-                // This stage runs your test.py
                 script {
                     sh 'python test.py'
                 }
@@ -13,7 +26,6 @@ pipeline {
 
         stage('Lint') {
             steps {
-                // This stage performs linting using your linting tools
                 script {
                     sh 'pip install pylint'
                     sh 'pylint main.py'
@@ -23,7 +35,6 @@ pipeline {
 
         stage('Copy to Dockerhost') {
             steps {
-                // This stage uses a simple SSH command to copy the project directory
                 script {
                     // Replace the placeholders with your actual values
                     def dockerhostIp = '172.31.32.140'
@@ -32,7 +43,7 @@ pipeline {
                     def projectDir = '/home/dockeradmin'
 
                     sh """
-                        scp -i ${dockerhostKey} -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/                        
+                        scp -i ${dockerhostKey} -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
                 }
             }
