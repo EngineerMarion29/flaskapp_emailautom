@@ -13,16 +13,16 @@ pipeline {
             steps {
                 script {
                     // Install build dependencies
-                    sh 'sudo yum -y install gcc openssl-devel bzip2-devel sqlite-devel make wget'
+                    // sh 'sudo yum -y install gcc openssl-devel bzip2-devel sqlite-devel make wget'
 
                     // Download and install Python 3.11.3
-                    sh 'wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz'
-                    sh 'tar xzf Python-3.11.3.tgz'
-                    sh 'cd Python-3.11.3 && ./configure --enable-optimizations'
-                    sh 'cd Python-3.11.3 && sudo make altinstall'
+                    // sh 'wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz'
+                    //sh 'tar xzf Python-3.11.3.tgz'
+                    // sh 'cd Python-3.11.3 && ./configure --enable-optimizations'
+                    // sh 'cd Python-3.11.3 && sudo make altinstall'
 
                     // Verify Python installation
-                    sh 'python3.11 --version'
+                    // sh 'python3.11 --version'
 
             	    // Create a symbolic link to the Python executable in /usr/local/bin/
                     // sh 'sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python'
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     // Reinstall Python 3.11 to address the missing `ssl` module
-                    sh 'python3.11 -m pip install -r requirements.txt'
+                    sh 'pip3.11 install -r requirements.txt'
                 }
             }
         }
