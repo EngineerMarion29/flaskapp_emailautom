@@ -12,6 +12,7 @@ pipeline {
             steps {
                 script {
                     // Installing dependencies
+                    sh 'sudo yum install openssl-devel -y && sudo python3.11 -m pip install --upgrade pip setuptools'
                     sh 'pip3.11 install -r requirements.txt'
                 }
             }
