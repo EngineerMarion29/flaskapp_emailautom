@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     // Replace the placeholders with your actual values
-                    def dockerhostIp = '172.31.42.85'
+                    def dockerhostIp = '172.31.46.168'
                     def dockerhostUser = 'dockeradmin'
                     // def dockerhostKey = '/root/.ssh/id_rsa.pub'
                     def projectDir = '/var/lib/jenkins/workspace/PullCodeFromGH_BuildPipeline'
