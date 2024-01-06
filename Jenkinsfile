@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh 'ansible-playbook -i inventory dockerization.yml'
+                    sh 'sudo ansible-playbook -i inventory dockerization.yml'
                 }
             }
         }       
