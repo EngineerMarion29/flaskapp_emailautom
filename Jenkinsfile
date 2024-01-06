@@ -43,6 +43,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Dockerization') {
+            steps {
+                script {
+                    // Dockerization via ansible playbook
+                    sh 'ansible-playbook dockerization.yml'
+                }
+            }
+        }       
     }
 }
 
