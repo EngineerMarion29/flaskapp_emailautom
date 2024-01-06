@@ -38,7 +38,7 @@ pipeline {
                     def projectDir = '/var/lib/jenkins/workspace/PullCodeFromGH_BuildPipeline'
 
                     sh """
-                        sudo scp -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
+                        sudo rsync -r --delete ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
                 }
             }
