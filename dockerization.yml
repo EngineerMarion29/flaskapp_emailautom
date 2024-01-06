@@ -1,5 +1,5 @@
 ---
- - hosts: managed_host
+ - hosts: localhost
    become: true
    tasks:
      - name: Run docker build on dockerhost
