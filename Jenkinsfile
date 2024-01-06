@@ -31,7 +31,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                    sh 'pip3 install pylint'
+                    sh 'pip3.11 install pylint'
                     sh 'pylint main.py'
                 }
             }
@@ -43,11 +43,11 @@ pipeline {
                     // Replace the placeholders with your actual values
                     def dockerhostIp = '172.31.42.85'
                     def dockerhostUser = 'dockeradmin'
-                    def dockerhostKey = '/root/.ssh/id_rsa.pub'
+                    // def dockerhostKey = '/root/.ssh/id_rsa.pub'
                     def projectDir = '/var/lib/jenkins/workspace/PullCodeFromGH_BuildPipeline'
 
                     sh """
-                        scp -i ${dockerhostKey} -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
+                        scp -i -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
                 }
             }
