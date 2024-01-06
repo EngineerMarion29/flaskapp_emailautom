@@ -38,7 +38,7 @@ pipeline {
                     def projectDir = '/var/lib/jenkins/workspace/PullCodeFromGH_BuildPipeline'
 
                     sh """
-                        scp -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
+                        sudo scp -r ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
                 }
             }
