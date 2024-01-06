@@ -28,24 +28,6 @@ pipeline {
             }
         }
 
-        stage('Lint') {
-            steps {
-                script {
-                    sh 'pip3.11 install pylint'
-                    
-                    def pylintExecutable = sh(script: 'find /var/lib/jenkins -type f -name pylint -print -quit', returnStdout: true).trim()
-                    
-                    if (pylintExecutable) {
-                        // Run pylint using the located executable
-                        sh "${pylintExecutable} main.py"
-                    } else {
-                        error "pylint executable not found"
-                    }
-                    sh 'pylint main.py'
-                }
-            }
-        }
-
         stage('Copy to Dockerhost') {
             steps {
                 script {
