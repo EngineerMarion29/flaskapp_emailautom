@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Copy to Dockerhost') {
+        stage('Copy to codebase Dockerhost') {
             steps {
                 script {
                     // Replace the placeholders with your actual values
