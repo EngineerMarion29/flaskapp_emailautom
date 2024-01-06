@@ -31,6 +31,7 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
+                    sh 'export PATH=$PATH:/var/lib/jenkins/.local/bin'
                     sh 'pip3.11 install pylint'
                     sh 'pylint main.py'
                 }
