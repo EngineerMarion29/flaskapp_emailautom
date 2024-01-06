@@ -31,8 +31,16 @@ pipeline {
         stage('Lint') {
             steps {
                 script {
-                    sh 'export PATH=$PATH:/var/lib/jenkins/.local/lib/python3.11/site-packages'
                     sh 'pip3.11 install pylint'
+                    
+                    def pylintExecutable = sh(script: 'find /var/lib/jenkins -type f -name pylint -print -quit', returnStdout: true).trim()
+                    
+                    if (pylintExecutable) {
+                        // Run pylint using the located executable
+                        sh "${pylintExecutable} main.py"
+                    } else {
+                        error "pylint executable not found"
+
                     sh 'pylint main.py'
                 }
             }
