@@ -40,7 +40,7 @@ pipeline {
                         sh "${pylintExecutable} main.py"
                     } else {
                         error "pylint executable not found"
-
+                    }
                     sh 'pylint main.py'
                 }
             }
