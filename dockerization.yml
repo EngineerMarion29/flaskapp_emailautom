@@ -3,24 +3,25 @@
   become: true
   tasks:
     - name: Build Docker image
-      docker_image:
-        path: /home/dockeradmin/PullCodeFromGH_BuildPipeline
+      community.general.docker_image:
+        build:
+          path: /home/dockeradmin/PullCodeFromGH_BuildPipeline
         name: flaskapp_dockerized
         tag: latest
-        source: build
 
     - name: Login to Dockerhub
-      docker_login:
+      community.general.docker_login:
         username: 'deguzmancaptain@gmail.com'
         password: 'HirayaManawari@0829'
 
-    - name: Docker tag and push to DockerHub
-      docker_image:
+    - name: Tag and push Docker image to DockerHub
+      community.general.docker_image:
         name: engineermarion29/flaskapp_dockerized_dh
         tag: dhremote
         source: flaskapp_dockerized:latest
 
-    - name: Pull docker image from Dockerhub
-      docker_image:
+    - name: Pull Docker image from Dockerhub
+      community.general.docker_image:
         name: docker.io/engineermarion29/flaskapp_dockerized_dh
         tag: dhremote
+
