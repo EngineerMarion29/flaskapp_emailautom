@@ -10,3 +10,5 @@
        shell: "docker tag flaskapp_dockerized:latest engineermarion29/flaskapp_dockerized_dh:latest;docker push engineermarion29/flaskapp_dockerized_dh:latest"
      - name: Pull docker image from dockerhub
        shell: "docker pull docker.io/engineermarion29/flaskapp_dockerized_dh:latest"
+     - name: Run the webapp docker
+       shell: "docker run -d --name flaskapp_webapp -p 8081:5000 docker.io/engineermarion29/flaskapp_dockerized_dh"
