@@ -15,5 +15,6 @@
        ignore_errors: true
      - name: Ensure previous flaskapp_webapp is removed
        shell: "docker rm flaskapp_webapp"
+       ignore_errors: true
      - name: Run the webapp docker
        shell: "docker run -d --name flaskapp_webapp -p 8081:5000 docker.io/engineermarion29/flaskapp_dockerized_dh"
