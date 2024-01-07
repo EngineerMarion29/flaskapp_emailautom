@@ -1,0 +1,27 @@
+---
+- hosts: managed_host
+  become: true
+  tasks:
+    - name: Build Docker image
+      community.general.docker_image:
+        build:
+          path: /home/dockeradmin/PullCodeFromGH_BuildPipeline
+        name: flaskapp_dockerized
+        tag: latest
+
+    - name: Login to Dockerhub
+      community.general.docker_login:
+        username: 'deguzmancaptain@gmail.com'
+        password: 'HirayaManawari@0829'
+
+    - name: Tag and push Docker image to DockerHub
+      community.general.docker_image:
+        name: engineermarion29/flaskapp_dockerized_dh
+        tag: dhremote
+        source: flaskapp_dockerized:latest
+
+    - name: Pull Docker image from Dockerhub
+      community.general.docker_image:
+        name: docker.io/engineermarion29/flaskapp_dockerized_dh
+        tag: dhremote
+

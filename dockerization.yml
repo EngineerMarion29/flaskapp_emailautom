@@ -1,27 +1,13 @@
 ---
-- hosts: managed_host
-  become: true
-  tasks:
-    - name: Build Docker image
-      community.general.docker_image:
-        build:
-          path: /home/dockeradmin/PullCodeFromGH_BuildPipeline
-        name: flaskapp_dockerized
-        tag: latest
-
-    - name: Login to Dockerhub
-      community.general.docker_login:
-        username: 'deguzmancaptain@gmail.com'
-        password: 'HirayaManawari@0829'
-
-    - name: Tag and push Docker image to DockerHub
-      community.general.docker_image:
-        name: engineermarion29/flaskapp_dockerized_dh
-        tag: dhremote
-        source: flaskapp_dockerized:latest
-
-    - name: Pull Docker image from Dockerhub
-      community.general.docker_image:
-        name: docker.io/engineermarion29/flaskapp_dockerized_dh
-        tag: dhremote
-
+ - hosts: managed_host
+   become: true
+   tasks:
+     - name: Run docker build on dockerhost
+       shell: "cd /home/dockeradmin/PullCodeFromGH_BuildPipeline; docker build -t flaskapp_dockerized ."
+     - name: Login to Dockerhub
+       shell: ">
+        docker login -u 'deguzmancaptain@gmail.com' -p 'HirayaManawari@0829'"
+     - name: Docker tag and push to DockerHub
+       shell: "docker tag flaskapp_dockerized:latest flaskapp_dockerized_dh:remote;docker push flaskapp_dockerized_dh:remote engineermarion29/flaskapp_dockerized_dh:dhremote"
+     - name: Pull docker image from dockerhub
+       shell: "docker pull docker.io/engineermarion29/flaskapp_dockerized_dh:dhremote"
