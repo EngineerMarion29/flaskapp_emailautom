@@ -3,5 +3,7 @@
 Web Application Purpose and Functions:
 
 -This application release will enable users, primarily, email marketers, to (1) send multiple emails by composing their message to the web app as well as the multiple recipients and (2) send multiple templated messages by uploading a csv file containing hundreds of email recipients.
+
 -The intended next release aims to integrate scheduling of sending functionality for time based automation.
+
 -This is a proof of concept project aiming to utilize python flask for a web application build, together with email sending automation capability integration of python to SMTP service.
