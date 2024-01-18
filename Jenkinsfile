@@ -49,7 +49,7 @@ pipeline {
                         sudo scp ${projectDir}/flaskapp_pods.yaml root@172.31.46.38:~/
                     """
                     sh """
-                        sudo scp ${projectDir}/flaskapp_service.yaml root}@172.31.46.38:~/
+                        sudo scp ${projectDir}/flaskapp_service.yaml root@172.31.46.38:~/
                     """
                     sh """
                         sudo scp ${projectDir}/dockerbuild.yml root@172.31.46.38:~/
