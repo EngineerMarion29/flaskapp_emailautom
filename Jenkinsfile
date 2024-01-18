@@ -54,6 +54,9 @@ pipeline {
                     sh """
                         sudo scp ${projectDir}/dockerbuild.yml root@172.31.46.38:~/
                     """
+                    sh """
+                        sudo scp ${projectDir}/inventory root@172.31.46.38:~/
+                    """
                 }
             }
         }
