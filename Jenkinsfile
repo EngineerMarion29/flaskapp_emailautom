@@ -53,7 +53,7 @@ pipeline {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh "sudo ssh root@172.31.46.38 'su - ansible_admin -c \"ansible-playbook -i inventory dockerization.yml\"'"
+                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i inventory dockerization.yml'"
                 }
             }
         }       
