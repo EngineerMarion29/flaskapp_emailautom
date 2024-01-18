@@ -32,26 +32,23 @@ pipeline {
             steps {
                 script {
                     // Replace the placeholders with your actual values
-                    def dockerhostIp = '172.31.36.125'
-                    def dockerhostUser = 'ansible_admin'
+                    def dockerhostIp = '172.31.46.168'
+                    def dockerhostUser = 'dockeradmin'
                     // def dockerhostKey = '/root/.ssh/id_rsa.pub'
-                    def projectDir = '/var/lib/jenkins/workspace/CI_CD_Pipeline_FlaskApp'
+                    def projectDir = '/var/lib/jenkins/workspace/PullCodeFromGH_BuildPipeline'
 
                     sh """
                         sudo rsync -r --delete ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
-                    
-                    // Send dockerization.yml to ansible_server
-                    sh "sudo cp -f ${projectDir}/dockerization.yml ${dockerhostUser}@172.31.46.38:~/"
                 }
             }
         }
 
-        stage('Dockerization in Docker_k8S_Host') {
+        stage('Dockerization') {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh "sudo ssh root@172.31.46.38 'su - ansible_admin -c \"ansible-playbook -i inventory dockerization.yml\"'"
+                    sh 'sudo ansible-playbook -i inventory dockerization.yml'
                 }
             }
         }       
