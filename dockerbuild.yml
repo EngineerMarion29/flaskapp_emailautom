@@ -1,0 +1,10 @@
+---
+ - hosts: docker_k8s
+   become: true
+   tasks:
+     - name: Run docker build on dockerhost
+       shell: "cd /home/ansible_admin/CI_CD_Pipeline_FlaskApp; docker build -t flaskapp_dockerized ."
+     - name: Login to dockerhub
+       shell: "docker login -u 'engineermarion29' -p 'HirayaManawari@0829' docker.io"
+     - name: Docker tag and push to DockerHub
+       shell: "docker tag flaskapp_dockerized:latest engineermarion29/flaskapp_dockerized_dh:latest;docker push engineermarion29/flaskapp_dockerized_dh:latest"
