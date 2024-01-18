@@ -1,6 +1,6 @@
 ---
  - hosts: docker_k8s
-   user: root
+   become: true
    tasks:
      - name: Deploy app in pods
        shell: "/usr/local/bin/kubectl apply -f flaskapp_pods.yaml"
