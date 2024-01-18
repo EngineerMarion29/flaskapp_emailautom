@@ -51,6 +51,9 @@ pipeline {
                     sh """
                         sudo scp ${projectDir}/flaskapp_service.yaml ${dockerhostUser}@172.31.46.38:~/
                     """
+                    sh """
+                        sudo scp ${projectDir}/dockerbuild.yml ${dockerhostUser}@172.31.46.38:~/
+                    """
                 }
             }
         }
