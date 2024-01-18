@@ -1,9 +1,9 @@
 ---
- - hosts: managed_host
+ - hosts: docker_k8s
    become: true
    tasks:
      - name: Run docker build on dockerhost
-       shell: "cd /home/dockeradmin/PullCodeFromGH_BuildPipeline; docker build -t flaskapp_dockerized ."
+       shell: "cd /var/lib/jenkins/workspace/CI_CD_Pipeline_FlaskApp; docker build -t flaskapp_dockerized ."
      - name: Login to dockerhub
        shell: "docker login -u 'engineermarion29' -p 'HirayaManawari@0829' docker.io"
      - name: Docker tag and push to DockerHub
