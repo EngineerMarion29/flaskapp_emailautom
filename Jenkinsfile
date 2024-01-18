@@ -14,8 +14,7 @@ pipeline {
                     // Installing dependencies
                     sh "python3.11 --version"
                     sh "virtualenv ."
-                    sh "source bin/activate"
-                    sh 'pip3.11 install -r requirements.txt'
+                    sh "source bin/activate && pip3.11 install -r requirements.txt"
                 }
             }
         }
