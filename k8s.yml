@@ -1,5 +1,5 @@
 ---
- - hosts: docker_k8s
+ - hosts: managed_host
    become: true
    tasks:
      - name: Deploy app in pods
