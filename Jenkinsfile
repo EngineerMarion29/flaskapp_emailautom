@@ -42,7 +42,9 @@ pipeline {
                     """
                     
                     // Send dockerization.yml to ansible_server
-                    sh "sudo cp -f ${projectDir}/dockerization.yml ${dockerhostUser}@172.31.46.38:~/"
+                    sh """
+                        sudo cp -f ${projectDir}/dockerization.yml ${dockerhostUser}@172.31.46.38:~/
+                    """
                 }
             }
         }
