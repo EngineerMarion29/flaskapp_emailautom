@@ -8,7 +8,7 @@ pipeline {
             }
         }
         
-        stage('Install App Dependencies') {
+        stage('Install Dependencies') {
             steps {
                 script {
                     // Installing dependencies
