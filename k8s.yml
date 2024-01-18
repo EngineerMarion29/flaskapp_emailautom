@@ -9,8 +9,8 @@
      - name: Docker tag and push to DockerHub
        shell: "docker tag flaskapp_dockerized:latest engineermarion29/flaskapp_dockerized_dh:latest;docker push engineermarion29/flaskapp_dockerized_dh:latest"
      - name: Deploy app in pods
-       shell: "kubectl apply -f flaskapp_pods.yaml"
+       shell: "/usr/local/bin/kubectl apply -f flaskapp_pods.yaml"
      - name: Create service for k8s pods
-       shell: "kubectl apply -f flaskapp_service.yaml"
+       shell: "/usr/local/bin/kubectl apply -f flaskapp_service.yaml"
      - name: Update deployment file
-       shell: "kubectl rollout restsart deployment.v1.apps./flask-app-k8s"
+       shell: "/usr/local/bin/kubectl rollout restsart deployment.v1.apps./flask-app-k8s"
