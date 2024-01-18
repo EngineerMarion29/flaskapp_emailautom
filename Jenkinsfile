@@ -43,7 +43,7 @@ pipeline {
                     
                     // Send dockerization.yml to ansible_server
                     sh """
-                        sudo scp ${projectDir}/dockerization.yml ${dockerhostUser}@172.31.46.38:~/
+                        sudo scp ${projectDir}/k8s.yml ${dockerhostUser}@172.31.46.38:~/
                     """
                 }
             }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i inventory dockerization.yml'"
+                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i inventory k8s.yml'"
                 }
             }
         }       
