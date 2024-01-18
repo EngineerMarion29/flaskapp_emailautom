@@ -38,21 +38,21 @@ pipeline {
                     def projectDir = '/var/lib/jenkins/workspace/CI_CD_Pipeline_FlaskApp'
 
                     sh """
-                        sudo rsync -r --delete ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
+                        sudo rsync -r --delete ${projectDir} root@${dockerhostIp}:~/
                     """
                     
                     // Send dockerization.yml to ansible_server
                     sh """
-                        sudo scp ${projectDir}/k8s.yml ${dockerhostUser}@172.31.46.38:~/
+                        sudo scp ${projectDir}/k8s.yml root@172.31.46.38:~/
                     """
                     sh """
-                        sudo scp ${projectDir}/flaskapp_pods.yaml ${dockerhostUser}@172.31.46.38:~/
+                        sudo scp ${projectDir}/flaskapp_pods.yaml root@172.31.46.38:~/
                     """
                     sh """
-                        sudo scp ${projectDir}/flaskapp_service.yaml ${dockerhostUser}@172.31.46.38:~/
+                        sudo scp ${projectDir}/flaskapp_service.yaml root}@172.31.46.38:~/
                     """
                     sh """
-                        sudo scp ${projectDir}/dockerbuild.yml ${dockerhostUser}@172.31.46.38:~/
+                        sudo scp ${projectDir}/dockerbuild.yml root@172.31.46.38:~/
                     """
                 }
             }
@@ -62,8 +62,8 @@ pipeline {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i inventory dockerbuild.yml'"
-                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i inventory k8s.yml'"
+                    sh "sudo ssh root@172.31.46.38 'ansible-playbook -i inventory dockerbuild.yml'"
+                    sh "sudo ssh root@172.31.46.38 'ansible-playbook -i inventory k8s.yml'"
                 }
             }
         }       
