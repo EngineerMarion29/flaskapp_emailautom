@@ -45,6 +45,12 @@ pipeline {
                     sh """
                         sudo scp ${projectDir}/k8s.yml ${dockerhostUser}@172.31.46.38:~/
                     """
+                    sh """
+                        sudo scp ${projectDir}/flaskapp_pods.yaml ${dockerhostUser}@172.31.46.38:~/
+                    """
+                    sh """
+                        sudo scp ${projectDir}/flaskapp_service.yaml ${dockerhostUser}@172.31.46.38:~/
+                    """
                 }
             }
         }
