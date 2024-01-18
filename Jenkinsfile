@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Test codebase') {
+        stage('Test the codebase') {
             steps {
                 script {
                     sh 'python3.11 test.py'
