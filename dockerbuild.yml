@@ -1,6 +1,6 @@
 ---
  - hosts: docker_k8s
-   become: true
+   user: root
    tasks:
      - name: Run docker build on dockerhost
        shell: "cd /home/ansible_admin/CI_CD_Pipeline_FlaskApp; docker build -t flaskapp_dockerized ."
