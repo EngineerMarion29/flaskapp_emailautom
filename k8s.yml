@@ -1,10 +1,14 @@
 ---
  - hosts: managed_host
-   user: root
+   user: ansible_admin
    tasks:
+     - name: Copy kubeconfig file to user's home dir
+       copy:
+         src: "/root/.kube/config"
+         dest: /home/ansible_admin/.kube/config
      - name: Deploy app in pods
-       shell: "/usr/local/bin/kubectl apply -f flaskapp_pods.yaml --kubeconfig=/root/.kube/config"
+       shell: "/usr/local/bin/kubectl apply -f flaskapp_pods.yaml --kubeconfig=/home/ansible_admin/.kube/config"
      - name: Create service for k8s pods
-       shell: "/usr/local/bin/kubectl apply -f flaskapp_service.yaml --kubeconfig=/root/.kube/config"
+       shell: "/usr/local/bin/kubectl apply -f flaskapp_service.yaml --kubeconfig=/home/ansible_admin/.kube/config"
      - name: Update deployment file
-       shell: "/usr/local/bin/kubectl rollout restsart deployment.v1.apps./flask-app-k8s --kubeconfig=/root/.kube/config"
+       shell: "/usr/local/bin/kubectl rollout restsart deployment.v1.apps./flask-app-k8s --kubeconfig=/home/ansible_admin/.kube/config"
