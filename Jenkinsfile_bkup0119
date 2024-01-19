@@ -38,12 +38,12 @@ pipeline {
                     def projectDir = '/var/lib/jenkins/workspace/CI_CD_Pipeline_FlaskApp'
 
                     sh """
-                        sudo rsync -r --delete ${projectDir} root@${dockerhostIp}:~/
+                        sudo rsync -r --delete ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
                     
                     // Send dockerization.yml to ansible_server
                     sh """
-                        sudo rsync -r --delete ${projectDir} root@172.31.46.38:~/
+                        sudo rsync -r --delete ${projectDir} ${dockerhostUser}@172.31.46.38:~/
                     """
                 }
             }
@@ -53,8 +53,8 @@ pipeline {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh "sudo ssh root@172.31.46.38 'ansible-playbook -i ~/CI_CD_Pipeline_FlaskApp/inventory ~/CI_CD_Pipeline_FlaskApp/dockerbuild.yml'"
-                    sh "sudo ssh root@172.31.46.38 'ansible-playbook -i ~/CI_CD_Pipeline_FlaskApp/inventory ~/CI_CD_Pipeline_FlaskApp/k8s.yml'"
+                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i ~/CI_CD_Pipeline_FlaskApp/inventory ~/CI_CD_Pipeline_FlaskApp/dockerbuild.yml'"
+                    sh "sudo ssh ansible_admin@172.31.46.38 'ansible-playbook -i ~/CI_CD_Pipeline_FlaskApp/inventory ~/CI_CD_Pipeline_FlaskApp/k8s.yml'"
                 }
             }
         }       
