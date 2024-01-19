@@ -38,24 +38,12 @@ pipeline {
                     def projectDir = '/var/lib/jenkins/workspace/CI_CD_Pipeline_FlaskApp'
 
                     sh """
-                        sudo rsync -r --delete ${projectDir} root@${dockerhostIp}:~/
+                        sudo rsync -r --delete ${projectDir} ${dockerhostUser}@${dockerhostIp}:~/
                     """
                     
                     // Send dockerization.yml to ansible_server
                     sh """
-                        sudo scp ${projectDir}/k8s.yml root@172.31.46.38:~/
-                    """
-                    sh """
-                        sudo scp ${projectDir}/flaskapp_pods.yaml root@172.31.46.38:~/
-                    """
-                    sh """
-                        sudo scp ${projectDir}/flaskapp_service.yaml root@172.31.46.38:~/
-                    """
-                    sh """
-                        sudo scp ${projectDir}/dockerbuild.yml root@172.31.46.38:~/
-                    """
-                    sh """
-                        sudo scp ${projectDir}/inventory root@172.31.46.38:~/
+                        sudo rsync -r --delete ${projectDir} ${dockerhostUser}@172.31.46.38:~/
                     """
                 }
             }
