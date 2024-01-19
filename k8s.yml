@@ -7,4 +7,4 @@
      - name: Create service for k8s pods
        shell: "/usr/local/bin/kubectl apply -f /root/CI_CD_Pipeline_FlaskApp/flaskapp_service.yaml"
      - name: Update deployment file
-       shell: "/usr/local/bin/kubectl rollout resstart deployment.v1.apps./flask-app-k8s"
+       shell: "/usr/local/bin/kubectl rollout restart deployment.v1.apps./flask-app-k8s"
