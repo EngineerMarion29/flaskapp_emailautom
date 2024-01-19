@@ -1,6 +1,6 @@
 ---
  - hosts: managed_host
-   become: true
+   user: root
    tasks:
      - name: Deploy app in pods
        shell: "/usr/local/bin/kubectl apply -f flaskapp_pods.yaml"
