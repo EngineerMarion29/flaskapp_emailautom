@@ -28,13 +28,13 @@ pipeline {
             }
         }
 
-        stage('Copy to codebase Dockerhost') {
+        stage('Copy to codebase Docker_K8S_Host') {
             steps {
                 script {
                     // Replace the placeholders with your actual values
-                    def dockerhostIp = '172.31.36.125'
+                    def dockerhostIp = '172.31.47.183'
                     def dockerhostUser = 'ansible_admin'
-                    // def dockerhostKey = '/root/.ssh/id_rsa.pub'
+                    // def dockerhostKey = /.ssh/id_rsa.pub'
                     def projectDir = '/var/lib/jenkins/workspace/CI_CD_Pipeline_FlaskApp'
 
                     sh """
@@ -53,8 +53,8 @@ pipeline {
             steps {
                 script {
                     // Dockerization via ansible playbook
-                    sh "sudo ssh root@172.31.46.38 'ansible-playbook -i inventory dockerbuild.yml'"
-                    sh "sudo ssh root@172.31.46.38 'ansible-playbook -i inventory k8s.yml'"
+                    sh "sudo ssh ansible_admin@172.31.47.183 'ansible-playbook -i inventory dockerbuild.yml'"
+                    sh "sudo ssh ansible_admin@172.31.47.183 'ansible-playbook -i inventory k8s.yml'"
                 }
             }
         }       

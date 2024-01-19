@@ -1,5 +1,5 @@
 [managed_host]
-172.31.36.125
+172.31.47.183
 
 [all:vars]
 ansible_user=ansible_admin
