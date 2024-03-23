@@ -1,0 +1,56 @@
+Jenkins server
+
+Install java
+Install jenkins
+Install python
+Install pip
+Install virtual env
+Configure ssh towards k8s host (user root and jenkins)
+Configure ssh towards ansible server (user root and jenkins)
+Open port 8080 for jenkins 
+Download pipeline and github
+Jenkinsfile build
+Listen and detect any changes from github repo
+Pull github repo once changes has been identified
+Test the code using python modules
+Once successful testing, push code base to k8s host (every build, it should be overwritten)
+After the prior, push as well the codebase to ansible machine
+Ssh from jenkins to ansible machine and execute playbook 
+The playbook contains dockerbuild, docker tag, docker login, docker push for dockerization
+After that, the playbook will run kubectl commands for pulling the image in dockerhub and building eks app deployment on the cluster
+
+
+Ansible machine
+
+Configure ssh towards k8s host (root user)
+Install ansible
+Configure ansible playbook, inventory and cfg files (can be done on local/laptop)
+
+
+K8s host
+
+Install python
+Install docker
+Install aws cli
+Install kubectl
+Install eksctl
+Create cluster already
+Configure manifest files for deployments (can be done locally and be part of codebase)
+Take note of docker housekeeping commands
+docker container prune --volumes
+
+
+
+Install helm on k8s host
+Add prom-graf- repo
+Install prom-graf stack
+Open port 9090 for prom
+Open port 3000 for grafana
+Open port 9093 for alertmanager
+Open port 9100 for node exporter
+Change certain svcs to LoadBalancer type to be accessed
+Configure the prom graf stack with the custom alerting rules (not fully tested yet)
+Check the value of alertconfig via the guide in youtube 
+Edit the value
+Upgrade via helm upgrade
+Create alert yml files and do a kubectl apply -f
