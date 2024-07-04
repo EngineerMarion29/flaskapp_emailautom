@@ -28,6 +28,10 @@ pipeline {
             }
         }
 
+
+##Update this, you don't need to send the code base to the docker host and ansible server. Just need to push it to the ansible server and add steps to push the codebase to
+##the code base once you're starting to build already on the host.
+        
         stage('Copy to codebase Docker_K8S_Host') {
             steps {
                 script {
